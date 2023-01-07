@@ -7,9 +7,9 @@ const twitterAccessToken = "Acess Token";
 const twitterAccessTokenSecret = "Access Token Secret";
 const openaiApiKey = "Open AI API key";
 
-function getSubject() {
-  // some random subjects
-  const subjects = [
+function getKeyword() {
+  // select random keywords
+  const keywords = [
     "reactjs",
     "javascript",
     "front-end developer",
@@ -28,7 +28,7 @@ function getSubject() {
   ];
 
   const index = Math.floor(Math.random() * 16);
-  return subjects[index];
+  return keywords[index];
 }
 
 const api = new Twit({
@@ -38,33 +38,52 @@ const api = new Twit({
   access_token_secret: twitterAccessTokenSecret,
 });
 
-async function generateTweet() {
-  const { data: tweetResponse } = await axios.post(
-    "https://api.openai.com/v1/completions",
-    {
-      model: "text-davinci-003",
-      prompt: `Generate a tweet about ${getSubject()} for social media. Write the tweet as if you are the author and include an emoji that aligns with the content.`,
-      max_tokens: 90,
-      temperature: 0.5,
-      top_p: 1,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${openaiApiKey}`,
-      },
-    }
-  );
-  const tweetText = tweetResponse.choices[0].text;
+async function searchAndComment() {
+  console.log("Searching for tweets...");
 
-  const { data: postTweetResponse } = await api.post("statuses/update", {
-    status: tweetText,
+  const query = `${getKeyword()}`; // you can also use the "OR" / "AND" between keywords: eg -> javascript OR html"
+  const maxTweets = 100;
+
+  const { data: searchResults } = await api.get("search/tweets", {
+    q: query,
+    count: maxTweets,
   });
+  
+  console.log(
+    `Found ${searchResults.statuses.length} tweets. Generating comments...`
+  );
 
-  console.log(`Tweet posted: ${postTweetResponse.text}`);
+  for (const tweet of searchResults.statuses) {
+    const { data: response } = await axios.post(
+      "https://api.openai.com/v1/completions",
+      {
+        model: "text-davinci-003",
+        prompt: `Comment on this tweet: "${tweet.text}", the reply to this tweet must be like i am writing it and also include some emoji that matches the generated text`,
+        max_tokens: 70,
+        temperature: 0.5,
+        top_p: 1,
+      },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${openaiApiKey}`,
+        },
+      }
+    );
 
-  await new Promise((resolve) => setTimeout(resolve, 30 * 60 * 1000)); // create a delay of 30min b/w tweet
-  generateTweet();
+    const comment = response.choices[0].text;
+    console.log(comment);
+
+    const { data: postResponse } = await api.post("statuses/update", {
+      status: `@${tweet.user.screen_name} ${comment}`,
+      in_reply_to_status_id: tweet.id_str,
+    });
+    console.log(`Comment posted: ${postResponse.text}`);
+
+    // Delay each iteration for 30min
+    await new Promise((resolve) => setTimeout(resolve, 30 * 60 * 1000));
+  }
+  searchAndComment();
 }
 
-generateTweet();
+searchAndComment();
