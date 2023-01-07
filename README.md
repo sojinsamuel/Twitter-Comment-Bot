@@ -15,7 +15,7 @@ A bot that comments on tweets containing a specified keyword. The bot uses the O
 * The bot waits for a fixed amount of time before searching for new tweets again.
 
 ## Requirements
-* A Twitter developer account and API keys
+* A Twitter developer account and API keys (with elevated access)
 * An OpenAI API key
 
 
