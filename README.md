@@ -28,7 +28,7 @@ Could you please spread the word through Twitter :arrow_right:  [![Tweet](https:
 
 ## :heart: Support me by donating
 
-Hi there! If you've found my work helpful or useful in any way, please consider supporting me by donating through PayPal. Your support helps me continue to create and share useful projects with the community. Thank you for your generosity and support!
+Hi there! If you've found my work helpful or useful in any way, please consider supporting me by donating. Your support helps me continue to create and share useful projects with the community. Thank you for your generosity and support!
 
 <p align="center"><a href="https://paypal.me/sojinsamuel?country.x=IN&locale.x=en_GB"> <img align="center" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="sojinsamuel" /></a></p>
 
