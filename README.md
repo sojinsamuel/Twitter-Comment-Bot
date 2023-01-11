@@ -1,7 +1,5 @@
-# Twitter Comment Bot 
+# [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Want%20to%20create%20your%20own%20AI%20powered%20Twitter%20bot?%0ATry%20this%20one%20that%20searches%20for%20tweets%20with%20specific%20keywords%20and%20replies%20with%20comments%20generated%20by%20@OpenAI&url=https://github.com/sojinsamuel/Twitter-Comment-Bot&hashtags=chatgpt) Twitter Comment Bot 
 A bot that comments on tweets containing a specified keyword. The bot uses the OpenAI API to generate comments and the Twitter API to post them. It is designed to run continuously, with a fixed delay between each comment. 
-
-Share this on Twitter [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Want%20to%20create%20your%20own%20AI%20powered%20Twitter%20bot?%0ATry%20this%20one%20that%20searches%20for%20tweets%20with%20specific%20keywords%20and%20replies%20with%20comments%20generated%20by%20@OpenAI&url=https://github.com/sojinsamuel/Twitter-Comment-Bot&hashtags=chatgpt)
 
 ## :technologist: Technologies used
 * Node.js
@@ -28,7 +26,7 @@ Could you please spread the word through Twitter :arrow_right:  [![Tweet](https:
 
 ## :heart: Support me by donating
 
-Hi there! If you've found my work helpful or useful in any way, please consider supporting me by donating. Your support helps me continue to create and share useful projects with the community. Thank you for your generosity and support!
+Hi there! If you've found my work helpful or useful in any way, please consider supporting me by donating. Your support helps me continue to create and share useful projects with the community. Thank you for your generosity and support! :handshake:
 
 <p align="center"><a href="https://paypal.me/sojinsamuel?country.x=IN&locale.x=en_GB"> <img align="center" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" alt="sojinsamuel" /></a></p>
 
