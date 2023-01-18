@@ -27,7 +27,7 @@ function getKeyword() {
     "programmer work culture",
   ];
 
-  const index = Math.floor(Math.random() * 16);
+  const index = Math.floor(Math.random() * keywords.length);
   return keywords[index];
 }
 
